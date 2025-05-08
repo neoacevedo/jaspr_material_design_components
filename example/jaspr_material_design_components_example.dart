@@ -7,7 +7,7 @@ void main() {
 
   runApp(
     Document(
-      title: 'jaspr_markdown_example',
+      title: 'jaspr_material_design_components_example',
       body: DomComponent(tag: 'body', child: App()),
       styles: [...App.styles],
     ),

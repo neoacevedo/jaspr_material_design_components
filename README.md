@@ -29,6 +29,19 @@ Instale el paquete con el comando `dart pub add jaspr_material_design_components
 
 ## Usage
 
+Para los íconos, importe los estilos de las fuentes de Material Symbols agregando lo siguiente en el `head` del `Document` de su proyecto:
+
+```dart
+const StyleRule.import(
+      'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'),
+const StyleRule.import(
+      'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'),
+const StyleRule.import(
+      'https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'),
+const StyleRule.import(
+      'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'),
+```
+
 Incluya el siguiente código en el último lugar dentro del método `build` de la clase `App` de su proyecto para inicializar los componentes web de Material: 
 
 ```dart
@@ -39,8 +52,7 @@ for (var element in JasprMaterialDesignComponents().materialScript()) {
 
 Esto cargará los estilos y scripts para que los componentes de Material se puedan usar.
 
-Componentes
----
+##### Componentes
 
 - [Button](doc/BUTTON.md)
 - [Card](doc/CARD.md)
