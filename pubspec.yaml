@@ -1,6 +1,6 @@
 name: jaspr_material_design_components
 description: Material Design Components para Jaspr. Integra los componentes de Material Web Components usando el CDN para encapsular y proporcionar sus elementos.
-version: 25.4.5+31
+version: 25.6.6+35
 repository: https://github.com/neoacevedo/jaspr_material_design_components.git
 
 topics:
@@ -14,8 +14,13 @@ environment:
   sdk: ">=3.6.0 <4.0.0"
 
 dependencies:
-  jaspr: ">=0.19.0 <0.20.0"
+  jaspr: ">=0.18.0 <0.20.0"
+  web: ">=0.5.0 <2.0.0"
+  universal_web: ^1.1.0+2
 
 dev_dependencies:
   lints: ^5.0.0
   test: ^1.24.0
+
+funding:
+  - https://ko-fi.com/neoacevedo

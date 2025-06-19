@@ -13,7 +13,7 @@ class Menu extends Component {
   final String _tag;
 
   Menu(this.children, {super.key, this.styles, this.attributes, this.events})
-    : _tag = 'md-menu';
+      : _tag = 'md-menu';
 
   /// Representa el [Menu] hijo del componente [Menu].
   Menu.submenu(

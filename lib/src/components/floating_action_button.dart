@@ -11,7 +11,7 @@ class FloatingActionButton extends Component {
   final String _tag;
 
   FloatingActionButton({super.key, this.children, this.attributes, this.styles})
-    : _tag = 'md-fab';
+      : _tag = 'md-fab';
 
   FloatingActionButton.branded({
     super.key,

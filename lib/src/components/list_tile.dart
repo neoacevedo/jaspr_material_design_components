@@ -18,12 +18,12 @@ class ListTile extends Component {
     this.children,
     this.styles,
     Map<String, EventCallback>? events,
-  }) : _tag = 'md-list-item',
-       _events = events;
+  })  : _tag = 'md-list-item',
+        _events = events;
 
   ListTile({super.key, this.attributes, this.children, this.styles})
-    : _tag = 'md-list',
-      _events = null;
+      : _tag = 'md-list',
+        _events = null;
 
   @override
   Element createElement() {

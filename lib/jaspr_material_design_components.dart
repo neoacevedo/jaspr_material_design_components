@@ -19,8 +19,10 @@ export 'src/components/list_tile.dart';
 export 'src/components/progress_indicator.dart';
 export 'src/components/radio.dart';
 export 'src/components/ripple.dart';
+export 'src/components/select.dart';
 export 'src/components/slider.dart';
 export 'src/components/switch.dart';
+export 'src/components/tabs.dart';
 export 'src/components/text_field.dart';
 
 // TODO: Export any libraries intended for clients of this package.

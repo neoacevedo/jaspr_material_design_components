@@ -37,309 +37,345 @@ class _AppState extends State<App> {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield section([
-      OutlinedCard(
-        children: [
-          h6([
-            text('Botones e inputs'),
-          ], classes: 'md-typescale-headline-medium'),
-          div([
-            Button.elevated(
+      div(
+          styles: Styles(
+              display: Display.grid,
+              gridTemplate: GridTemplate(
+                  columns: GridTracks([
+                GridTrack(TrackSize.minmax(
+                    TrackSize(50.percent), TrackSize.maxContent))
+              ]))),
+          [
+            OutlinedCard(
               children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Elevated'),
+                h6([
+                  text('Botones e inputs'),
+                ], classes: 'md-typescale-headline-medium'),
+                div([
+                  Button.elevated(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Elevated'),
+                    ],
+                  ),
+                  Button.filled(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Filled'),
+                    ],
+                  ),
+                  Button.outlined(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Outlined'),
+                    ],
+                  ),
+                  Button.text(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Text'),
+                    ],
+                  ),
+                  Button.filledTonal(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      Text('Tonal'),
+                    ],
+                  ),
+                  p([]),
+                  TextField(
+                    filled: true,
+                    attributes: {'label': 'Filled Text Field'},
+                    children: [
+                      Icon('search', attributes: {'slot': 'leading-icon'}),
+                    ],
+                  ),
+                  TextField(
+                    attributes: {'placeholder': 'Outlined Text Field'},
+                    children: [
+                      Button.icon(
+                        attributes: {'slot': 'trailing-icon'},
+                        children: [Icon('visibility')],
+                      ),
+                    ],
+                  ),
+                  p([]),
+                  TextField(
+                    filled: true,
+                    attributes: {
+                      'label': 'Filled Text Area',
+                      'type': 'textarea',
+                      'rows': '3',
+                    },
+                  ),
+                  TextField(
+                    attributes: {
+                      'label': 'Outlined Text Area',
+                      'type': 'textarea',
+                      'rows': '3',
+                    },
+                  ),
+                  p([text('Checkbox y Radio')]),
+                  Checkbox(attributes: {'touch-target': 'wrapper'}),
+                  Checkbox(
+                      attributes: {'touch-target': 'wrapper', 'checked': ''}),
+                  Checkbox(
+                    attributes: {
+                      'touch-target': 'wrapper',
+                      'indeterminate': ''
+                    },
+                  ),
+                  br(),
+                  Radio(attributes: {'name': 'animals', 'value': 'cats'}),
+                  Radio(attributes: {'name': 'animals', 'value': 'dogs'}),
+                  Radio(
+                    attributes: {
+                      'name': 'animals',
+                      'value': 'birds',
+                      'checked': ''
+                    },
+                  ),
+                ]),
               ],
+              cssClass: 'group',
             ),
-            Button.filled(
+            ElevatedCard(
               children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Filled'),
+                h6([text('Chips')], classes: 'md-typescale-headline-medium'),
+                div([
+                  Chipset([
+                    Chip.assist('Assist'),
+                    Chip.filter('Filter', removable: false),
+                    Chip.input('Input'),
+                    Chip.suggestion('Suggestion'),
+                  ]),
+                ]),
               ],
+              cssClass: 'group',
             ),
-            Button.outlined(
+            FilledCard(
               children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Outlined'),
+                h6([text('ListTile')], classes: 'md-typescale-headline-medium'),
+                div([
+                  ListTile(
+                    styles: Styles(maxWidth: 300.px),
+                    children: [
+                      ListTile.item(
+                        children: [
+                          text('Lit'),
+                          svg(
+                            [
+                              raw(
+                                '<path fill="currentColor" d="m160 80v80l-40-40zm-40 40v80l40-40zm0-80v80l-40-40zm-40 40v80l40-40zm-40-40v80l40-40zm40-40v80l-40-40zm-40 120v80l-40-40zm-40-40v80l40-40z" />',
+                              ),
+                            ],
+                            styles: Styles(height: 24.px),
+                            viewBox: '0 0 160 200',
+                            attributes: {'slot': 'start'},
+                          ),
+                        ],
+                      ),
+                      Divider(),
+                      ListTile.item(
+                        children: [
+                          text('Polymer'),
+                          Icon('polymer', attributes: {'slot': 'start'}),
+                        ],
+                      ),
+                      Divider(),
+                      ListTile.item(
+                        children: [
+                          text('Angular'),
+                          Icon('angular', attributes: {'slot': 'start'}),
+                        ],
+                      ),
+                    ],
+                  ),
+                ]),
               ],
+              cssClass: 'group',
             ),
-            Button.text(
+            OutlinedCard(
               children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Text'),
-              ],
-            ),
-            Button.filledTonal(
-              children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                Text('Tonal'),
-              ],
-            ),
-            p([]),
-            TextField(
-              filled: true,
-              attributes: {'label': 'Filled Text Field'},
-              children: [
-                Icon('search', attributes: {'slot': 'leading-icon'}),
-              ],
-            ),
-            TextField(
-              attributes: {'placeholder': 'Outlined Text Field'},
-              children: [
-                Button.icon(
-                  attributes: {'slot': 'trailing-icon'},
-                  children: [Icon('visibility')],
-                ),
-              ],
-            ),
-            p([]),
-            TextField(
-              filled: true,
-              attributes: {
-                'label': 'Filled Text Area',
-                'type': 'textarea',
-                'rows': '3',
-              },
-            ),
-            TextField(
-              attributes: {
-                'label': 'Outlined Text Area',
-                'type': 'textarea',
-                'rows': '3',
-              },
-            ),
-            p([text('Checkbox y Radio')]),
-            Checkbox(attributes: {'touch-target': 'wrapper'}),
-            Checkbox(attributes: {'touch-target': 'wrapper', 'checked': ''}),
-            Checkbox(
-              attributes: {'touch-target': 'wrapper', 'indeterminate': ''},
-            ),
-            br(),
-            Radio(attributes: {'name': 'animals', 'value': 'cats'}),
-            Radio(attributes: {'name': 'animals', 'value': 'dogs'}),
-            Radio(
-              attributes: {'name': 'animals', 'value': 'birds', 'checked': ''},
-            ),
-          ]),
-        ],
-        cssClass: 'group',
-      ),
-      p([]),
-      ElevatedCard(
-        children: [
-          h6([text('Chips')], classes: 'md-typescale-headline-medium'),
-          div([
-            Chipset([
-              Chip.assist('Assist'),
-              Chip.filter('Filter', removable: false),
-              Chip.input('Input'),
-              Chip.suggestion('Suggestion'),
-            ]),
-          ]),
-        ],
-        cssClass: 'group',
-      ),
-      p([]),
-      FilledCard(
-        children: [
-          h6([text('ListTile')], classes: 'md-typescale-headline-medium'),
-          div([
-            ListTile(
-              styles: Styles(maxWidth: 300.px),
-              children: [
-                ListTile.item(
-                  children: [
-                    text('Lit'),
-                    svg(
-                      [
-                        raw(
-                          '<path fill="currentColor" d="m160 80v80l-40-40zm-40 40v80l40-40zm0-80v80l-40-40zm-40 40v80l40-40zm-40-40v80l40-40zm40-40v80l-40-40zm-40 120v80l-40-40zm-40-40v80l40-40z" />',
-                        ),
-                      ],
-                      styles: Styles(height: 24.px),
-                      viewBox: '0 0 160 200',
-                      attributes: {'slot': 'start'},
+                h6([text('Menu')], classes: 'md-typescale-headline-medium'),
+                div([
+                  span([
+                    Button.filled(
+                      attributes: {'id': 'usage-anchor', 'anchor': 'anchor'},
+                      // events: events(onClick: _showDialog),
+                      children: [text('Set with idref')],
                     ),
-                  ],
-                ),
-                Divider(),
-                ListTile.item(
-                  children: [
-                    text('Polymer'),
-                    Icon('polymer', attributes: {'slot': 'start'}),
-                  ],
-                ),
-                Divider(),
-                ListTile.item(
-                  children: [
-                    text('Angular'),
-                    Icon('angular', attributes: {'slot': 'start'}),
-                  ],
-                ),
+                    Menu(
+                      [
+                        MenuItem([
+                          div([text('Apple')],
+                              attributes: {'slot': 'headline'}),
+                        ]),
+                        MenuItem([
+                          div([text('Banana')],
+                              attributes: {'slot': 'headline'}),
+                        ]),
+                        MenuItem([
+                          div([text('Cucumber')],
+                              attributes: {'slot': 'headline'}),
+                        ]),
+                      ],
+                      attributes: {
+                        'id': 'usage-menu',
+                        'anchor': 'usage-anchor'
+                      },
+                      // attributes: menuAttributes,
+                    ),
+                  ], styles: Styles(position: Position.relative())),
+                ]),
               ],
+              cssClass: 'group',
             ),
-          ]),
-        ],
-        cssClass: 'group',
-      ),
-      p([]),
-    ]);
-    yield section([
-      OutlinedCard(
-        children: [
-          h6([text('Menu')], classes: 'md-typescale-headline-medium'),
-          div([
-            span([
-              Button.filled(
-                attributes: {'id': 'usage-anchor', 'anchor': 'anchor'},
-                // events: events(onClick: _showDialog),
-                children: [text('Set with idref')],
-              ),
-              Menu(
-                [
-                  MenuItem([
-                    div([text('Apple')], attributes: {'slot': 'headline'}),
+            OutlinedCard(
+              children: [
+                h6([
+                  text('Progress Indicators'),
+                ], classes: 'md-typescale-headline-medium'),
+                div([
+                  p([
+                    text('Linear'),
+                    ProgressIndicator(ProgressIndicator.linear, value: 0.5),
                   ]),
-                  MenuItem([
-                    div([text('Banana')], attributes: {'slot': 'headline'}),
+                  p([
+                    text('Linear Indeterminado'),
+                    ProgressIndicator(ProgressIndicator.linear,
+                        indeterminate: true),
                   ]),
-                  MenuItem([
-                    div([text('Cucumber')], attributes: {'slot': 'headline'}),
+                  p([
+                    text('Circular'),
+                    ProgressIndicator(ProgressIndicator.circular, value: 0.75),
                   ]),
-                ],
-                attributes: {'id': 'usage-menu', 'anchor': 'usage-anchor'},
-                // attributes: menuAttributes,
-              ),
-            ], styles: Styles(position: Position.relative())),
-          ]),
-        ],
-        cssClass: 'group',
-      ),
-      p([]),
-      OutlinedCard(
-        children: [
-          h6([
-            text('Progress Indicators'),
-          ], classes: 'md-typescale-headline-medium'),
-          div([
-            p([
-              text('Linear'),
-              ProgressIndicator(ProgressIndicator.linear, value: 0.5),
-            ]),
-            p([
-              text('Linear Indeterminado'),
-              ProgressIndicator(ProgressIndicator.linear, indeterminate: true),
-            ]),
-            p([
-              text('Circular'),
-              ProgressIndicator(ProgressIndicator.circular, value: 0.75),
-            ]),
-            p([
-              text('Circular Indeterminado'),
-              ProgressIndicator(
-                ProgressIndicator.circular,
-                indeterminate: true,
-              ),
-            ]),
-          ]),
-        ],
-        cssClass: 'group',
-      ),
-      p([]),
-      FilledCard(
-        children: [
-          h6([text('Dialogs')], classes: 'md-typescale-headline-medium'),
-          div([
-            Button.elevated(
-              children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Diálogo simple'),
+                  p([
+                    text('Circular Indeterminado'),
+                    ProgressIndicator(
+                      ProgressIndicator.circular,
+                      indeterminate: true,
+                    ),
+                  ]),
+                ]),
               ],
-              events: events(
-                onClick: () {
-                  setState(() {
-                    dialogAttributes['open'] = '';
-                    dialogAttributes.remove('type');
-                  });
-                },
-              ),
+              cssClass: 'group',
             ),
-            Button.filled(
+            FilledCard(
               children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Alert'),
+                h6([text('Dialogs')], classes: 'md-typescale-headline-medium'),
+                div([
+                  Button.elevated(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Diálogo simple'),
+                    ],
+                    events: events(
+                      onClick: () {
+                        setState(() {
+                          dialogAttributes['open'] = '';
+                          dialogAttributes.remove('type');
+                        });
+                      },
+                    ),
+                  ),
+                  Button.filled(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Alert'),
+                    ],
+                    events: events(
+                      onClick: () {
+                        setState(() {
+                          dialogAttributes['type'] = 'alert';
+                          dialogAttributes['open'] = '';
+                        });
+                      },
+                    ),
+                  ),
+                  br(),
+                  br(),
+                  Button.outlined(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      text('Diálogo Confirm'),
+                    ],
+                    events: events(
+                      onClick: () {
+                        setState(() {
+                          dialogAttributes['type'] = 'confirm';
+                          dialogAttributes['open'] = '';
+                        });
+                      },
+                    ),
+                  ),
+                  Button.text(
+                    children: [
+                      Icon('home', attributes: {'slot': 'icon'}),
+                      Text('Form'),
+                    ],
+                    events: events(
+                      onClick: () {
+                        setState(() {
+                          dialogAttributes['open'] = '';
+                          dialogAttributes['type'] = 'form';
+                        });
+                      },
+                    ),
+                  ),
+                ]),
               ],
-              events: events(
-                onClick: () {
-                  setState(() {
-                    dialogAttributes['type'] = 'alert';
-                    dialogAttributes['open'] = '';
-                  });
-                },
-              ),
+              cssClass: 'group',
             ),
-            br(),
-            br(),
-            Button.outlined(
+            ElevatedCard(
               children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                text('Diálogo Confirm'),
+                h6([text('Sliders')], classes: 'md-typescale-headline-medium'),
+                div([
+                  span([
+                    text('Continuo'),
+                    Slider(
+                        attributes: {'min': '0', 'max': '100', 'value': '50'}),
+                  ]),
+                  br(),
+                  span([
+                    text('Discreto'),
+                    Slider(
+                      attributes: {
+                        'step': 5.toString(),
+                        'min': '0',
+                        'max': '20'
+                      },
+                      ticks: true,
+                    ),
+                  ]),
+                  br(),
+                  span([
+                    text('Rango (con etiqueta de valor)'),
+                    Slider(
+                      attributes: {'value-start': '25', 'value-end': '50'},
+                      range: true,
+                      labeled: true,
+                    ),
+                  ]),
+                ]),
               ],
-              events: events(
-                onClick: () {
-                  setState(() {
-                    dialogAttributes['type'] = 'confirm';
-                    dialogAttributes['open'] = '';
-                  });
-                },
-              ),
+              cssClass: 'group',
             ),
-            Button.text(
-              children: [
-                Icon('home', attributes: {'slot': 'icon'}),
-                Text('Form'),
-              ],
-              events: events(
-                onClick: () {
-                  setState(() {
-                    dialogAttributes['open'] = '';
-                    dialogAttributes['type'] = 'form';
-                  });
-                },
-              ),
-            ),
+            OutlinedCard(children: [
+              h6([
+                text('Select'),
+              ], classes: 'md-typescale-headline-medium'),
+              Select.outlined(label: 'Select Outlined', children: [
+                SelectOption(attributes: {'aria-label': 'blank'}),
+                SelectOption(selected: true, value: 'apple', children: [
+                  div(attributes: {'slot': 'headline'}, [text('Apple')])
+                ]),
+                SelectOption(value: 'tomato', children: [
+                  div(attributes: {'slot': 'headline'}, [text('Tomato')])
+                ]),
+              ])
+            ], cssClass: 'group')
           ]),
-        ],
-        cssClass: 'group',
-      ),
-      p([]),
-      ElevatedCard(
-        children: [
-          h6([text('Sliders')], classes: 'md-typescale-headline-medium'),
-          div([
-            span([
-              text('Continuo'),
-              Slider(attributes: {'min': '0', 'max': '100', 'value': '50'}),
-            ]),
-            br(),
-            span([
-              text('Discreto'),
-              Slider(
-                attributes: {'step': 5.toString(), 'min': '0', 'max': '20'},
-                ticks: true,
-              ),
-            ]),
-            br(),
-            span([
-              text('Rango (con etiqueta de valor)'),
-              Slider(
-                attributes: {'value-start': '25', 'value-end': '50'},
-                range: true,
-                labeled: true,
-              ),
-            ]),
-          ]),
-        ],
-        cssClass: 'group',
-      ),
     ]);
     yield Dialog(
       key: myDialogKey,

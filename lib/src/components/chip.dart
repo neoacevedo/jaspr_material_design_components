@@ -22,8 +22,8 @@ class Chip extends Component {
     this.attributes,
     this.styles,
     this.children,
-  }) : _tag = 'md-assist-chip',
-       _removable = false;
+  })  : _tag = 'md-assist-chip',
+        _removable = false;
 
   /// Renderiza el componente [md-filter-chip](https://material-web.dev/components/chip/#filter-chip).
   ///
@@ -76,12 +76,12 @@ class Chip extends Component {
     this.styles,
     this.children,
     bool removable = false,
-  }) : _tag = 'md-filter-chip',
-       _removable = removable,
-       assert(
-         (attributes?.containsKey('href') != true),
-         'Los chips tipo filter no deben tener el atributo `href`.',
-       );
+  })  : _tag = 'md-filter-chip',
+        _removable = removable,
+        assert(
+          (attributes?.containsKey('href') != true),
+          'Los chips tipo filter no deben tener el atributo `href`.',
+        );
 
   /// Renderiza el componente [md-input-chip](https://material-web.dev/components/chip/#input-chip).
   ///
@@ -93,8 +93,8 @@ class Chip extends Component {
     this.attributes,
     this.styles,
     this.children,
-  }) : _tag = 'md-input-chip',
-       _removable = false;
+  })  : _tag = 'md-input-chip',
+        _removable = false;
 
   /// Renderiza el componente [md-suggestion-chip](https://material-web.dev/components/chip/#suggestion-chip).
   ///
@@ -107,8 +107,8 @@ class Chip extends Component {
     this.attributes,
     this.styles,
     this.children,
-  }) : _tag = 'md-suggestion-chip',
-       _removable = false;
+  })  : _tag = 'md-suggestion-chip',
+        _removable = false;
 
   @override
   Element createElement() {
