@@ -64,5 +64,6 @@ Esto cargará los estilos y scripts para que los componentes de Material se pued
 - [Menu](doc/MENU.md)
 - [ProgressIndicator](doc/PROGRESSINDICATOR.md) 
 - [Radio](doc/RADIO.md)
+- [Tabs](doc/TABS.md)
 - [Text Input](doc/TEXTINPUT.md)
 - [Switch](doc/SWITCH.md)
