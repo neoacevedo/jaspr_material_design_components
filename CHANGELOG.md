@@ -10,3 +10,4 @@
 
 - El componente `Card` se renderiza ahora usando código javascript.
 - Se agrega el componente `Select`.
+- Se agrega el componente `Tabs`.
