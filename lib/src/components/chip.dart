@@ -1,7 +1,8 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa los diferentes tipos del componente `md-*-chip` de [Material Web Components](https://material-web.dev/components/chip/).
-class Chip extends Component {
+class Chip extends StatelessComponent {
   final String label;
   final String? cssClass;
   final Styles? styles;
@@ -15,15 +16,7 @@ class Chip extends Component {
   ///
   /// Este componente no tiene el atributo `removable` por lo que aunque se le incluya, no renderizará el
   /// trailing-icon.
-  Chip.assist(
-    this.label, {
-    super.key,
-    this.cssClass,
-    this.attributes,
-    this.styles,
-    this.children,
-  })  : _tag = 'md-assist-chip',
-        _removable = false;
+  Chip.assist(this.label, {super.key, this.cssClass, this.attributes, this.styles, this.children}) : _tag = 'md-assist-chip', _removable = false;
 
   /// Renderiza el componente [md-filter-chip](https://material-web.dev/components/chip/#filter-chip).
   ///
@@ -68,50 +61,24 @@ class Chip extends Component {
   ///  }),
   /// ...
   /// ```
-  Chip.filter(
-    this.label, {
-    super.key,
-    this.cssClass,
-    this.attributes,
-    this.styles,
-    this.children,
-    bool removable = false,
-  })  : _tag = 'md-filter-chip',
-        _removable = removable,
-        assert(
-          (attributes?.containsKey('href') != true),
-          'Los chips tipo filter no deben tener el atributo `href`.',
-        );
+  Chip.filter(this.label, {super.key, this.cssClass, this.attributes, this.styles, this.children, bool removable = false})
+    : _tag = 'md-filter-chip',
+      _removable = removable,
+      assert((attributes?.containsKey('href') != true), 'Los chips tipo filter no deben tener el atributo `href`.');
 
   /// Renderiza el componente [md-input-chip](https://material-web.dev/components/chip/#input-chip).
   ///
   /// A diferencia de [Chip.filter()], este componente mostrará el trailing-icon para removerlo del DOM.
-  Chip.input(
-    this.label, {
-    super.key,
-    this.cssClass,
-    this.attributes,
-    this.styles,
-    this.children,
-  })  : _tag = 'md-input-chip',
-        _removable = false;
+  Chip.input(this.label, {super.key, this.cssClass, this.attributes, this.styles, this.children}) : _tag = 'md-input-chip', _removable = false;
 
   /// Renderiza el componente [md-suggestion-chip](https://material-web.dev/components/chip/#suggestion-chip).
   ///
   /// Este componente no tiene el atributo `removable` por lo que aunque se le incluya, no renderizará el
   /// trailing-icon.
-  Chip.suggestion(
-    this.label, {
-    super.key,
-    this.cssClass,
-    this.attributes,
-    this.styles,
-    this.children,
-  })  : _tag = 'md-suggestion-chip',
-        _removable = false;
+  Chip.suggestion(this.label, {super.key, this.cssClass, this.attributes, this.styles, this.children}) : _tag = 'md-suggestion-chip', _removable = false;
 
   @override
-  Element createElement() {
+  Component build(BuildContext context) {
     Map<String, String> localAttributes = attributes ?? {};
 
     localAttributes['label'] = label;
@@ -119,15 +86,6 @@ class Chip extends Component {
       localAttributes['removable'] = '';
     }
 
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: _tag,
-        classes: cssClass,
-        attributes: localAttributes,
-        styles: styles,
-        children: children,
-      ),
-    );
+    return Component.element(key: key, tag: _tag, classes: cssClass, attributes: localAttributes, styles: styles, children: children);
   }
 }

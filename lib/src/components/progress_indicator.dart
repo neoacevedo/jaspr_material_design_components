@@ -9,7 +9,7 @@ import 'package:jaspr/jaspr.dart';
 ///
 /// Los indicadores indeterminados pueden intercalar entre cuatro colores _(primary, primary container, tertiary, tertiary container que es el predefinido)_
 /// con la propiedad [fourColor] en `true`.
-class ProgressIndicator extends Component {
+class ProgressIndicator extends StatelessComponent {
   static final circular = 'circular';
   static final linear = 'linear';
 
@@ -32,7 +32,7 @@ class ProgressIndicator extends Component {
   });
 
   @override
-  Element createElement() {
+  Component build(BuildContext context) {
     Map<String, String> attributes = {};
 
     if (buffer != null) {
@@ -55,8 +55,6 @@ class ProgressIndicator extends Component {
       attributes['four-color'] = '';
     }
 
-    return DomElement(
-      DomComponent(key: key, tag: 'md-$type-progress', attributes: attributes),
-    );
+    return Component.element(key: key, tag: 'md-$type-progress', attributes: attributes);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 abstract class _Field extends StatelessComponent {
@@ -13,30 +14,15 @@ abstract class _Field extends StatelessComponent {
 
   final String _type;
 
-  _Field(
-    String type, {
-    super.key,
-    this.cssStyles,
-    this.cssClass,
-    this.attributes,
-    this.children,
-    this.events,
-  }) : _type = generateFieldTag(type);
+  _Field(String type, {super.key, this.cssStyles, this.cssClass, this.attributes, this.children, this.events}) : _type = generateFieldTag(type);
 
   static String generateFieldTag(String type) {
     return 'md-$type-text-field';
   }
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield DomComponent(
-      tag: _type,
-      classes: cssClass,
-      attributes: attributes,
-      styles: cssStyles,
-      children: children,
-      events: events,
-    );
+  Component build(BuildContext context) {
+    return Component.element(tag: _type, classes: cssClass, attributes: attributes, styles: cssStyles, children: children, events: events);
   }
 }
 
@@ -48,13 +34,6 @@ abstract class _Field extends StatelessComponent {
 /// En su propiedad [attributes] puede definir si este componente se comporta como
 /// un `textarea` definiendo la propiedad `type` en `textarea`.
 class TextField extends _Field {
-  TextField({
-    super.key,
-    super.cssStyles,
-    super.cssClass,
-    super.attributes,
-    super.children,
-    super.events,
-    bool filled = false,
-  }) : super(filled ? 'filled' : 'outlined');
+  TextField({super.key, super.cssStyles, super.cssClass, super.attributes, super.children, super.events, bool filled = false})
+    : super(filled ? 'filled' : 'outlined');
 }

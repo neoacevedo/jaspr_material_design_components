@@ -1,7 +1,8 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente [Dialog](https://material-web.dev/components/dialog/) de Material Web Components.
-class Dialog extends Component {
+class Dialog extends StatelessComponent {
   final String? id;
 
   late final List<Component>? headline;
@@ -16,33 +17,21 @@ class Dialog extends Component {
 
   late final List<Component>? actions;
 
-  Dialog({
-    super.key,
-    this.id,
-    this.headline,
-    this.children,
-    this.attributes,
-    this.styles,
-    this.cssClass,
-    this.actions,
-  });
+  Dialog({super.key, this.id, this.headline, this.children, this.attributes, this.styles, this.cssClass, this.actions});
 
   @override
-  Element createElement() {
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: 'md-dialog',
-        classes: cssClass,
-        attributes: attributes,
-        styles: styles,
-        children: [
-          if (headline != null)
-            div(headline!, attributes: {'slot': 'headline'}),
-          if (children != null) div(children!, attributes: {'slot': 'content'}),
-          if (actions != null) div(actions!, attributes: {'slot': 'actions'}),
-        ],
-      ),
+  Component build(BuildContext context) {
+    return Component.element(
+      key: key,
+      tag: 'md-dialog',
+      classes: cssClass,
+      attributes: attributes,
+      styles: styles,
+      children: [
+        if (headline != null) div(headline!, attributes: {'slot': 'headline'}),
+        if (children != null) div(children!, attributes: {'slot': 'content'}),
+        if (actions != null) div(actions!, attributes: {'slot': 'actions'}),
+      ],
     );
   }
 }

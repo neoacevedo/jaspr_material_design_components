@@ -1,7 +1,8 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente [Divider](https://material-web.dev/components/divider/) de Material Web Components.
-class Divider extends Component {
+class Divider extends StatelessComponent {
   final bool? insetStart;
 
   final bool? insetEnd;
@@ -12,17 +13,10 @@ class Divider extends Component {
 
   final Styles? styles;
 
-  Divider({
-    super.key,
-    this.attributes,
-    this.styles,
-    this.cssClass,
-    this.insetStart,
-    this.insetEnd,
-  });
+  Divider({super.key, this.attributes, this.styles, this.cssClass, this.insetStart, this.insetEnd});
 
   @override
-  Element createElement() {
+  Component build(BuildContext context) {
     Map<String, String> localAttributes = attributes ?? {};
 
     if (insetStart != null) {
@@ -33,14 +27,6 @@ class Divider extends Component {
       localAttributes['inset-end'] = '$insetEnd';
     }
 
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: 'md-divider',
-        styles: styles,
-        classes: cssClass,
-        attributes: localAttributes,
-      ),
-    );
+    return Component.element(key: key, tag: 'md-divider', styles: styles, classes: cssClass, attributes: localAttributes);
   }
 }

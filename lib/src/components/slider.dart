@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente [Slider](https://material-web.dev/components/slider/) de Material Web Components.
@@ -16,7 +17,7 @@ import 'package:jaspr/jaspr.dart';
 /// ```dart
 /// Slider(attributes: {'value-start': '25', 'value-end': '50', 'value': '50'}, range: true);
 /// ```
-class Slider extends Component {
+class Slider extends StatelessComponent {
   final String? cssClass;
 
   final Map<String, String>? attributes;
@@ -29,17 +30,10 @@ class Slider extends Component {
 
   final bool? labeled;
 
-  Slider({
-    this.attributes,
-    this.cssClass,
-    this.styles,
-    this.range = false,
-    this.ticks = false,
-    this.labeled = false,
-  });
+  Slider({this.attributes, this.cssClass, this.styles, this.range = false, this.ticks = false, this.labeled = false});
 
   @override
-  Element createElement() {
+  Component build(BuildContext context) {
     if (range == true) {
       attributes?['range'] = '';
     }
@@ -52,13 +46,6 @@ class Slider extends Component {
       attributes?['labeled'] = '';
     }
 
-    return DomElement(
-      DomComponent(
-        tag: "md-slider",
-        classes: cssClass,
-        attributes: attributes,
-        styles: styles,
-      ),
-    );
+    return Component.element(tag: "md-slider", classes: cssClass, attributes: attributes, styles: styles);
   }
 }

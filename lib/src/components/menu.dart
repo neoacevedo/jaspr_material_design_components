@@ -1,7 +1,8 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente [Menu](https://material-web.dev/components/menu/) de Material Web Components.
-class Menu extends Component {
+class Menu extends StatelessComponent {
   final Styles? styles;
 
   final Map<String, String>? attributes;
@@ -12,34 +13,18 @@ class Menu extends Component {
 
   final String _tag;
 
-  Menu(this.children, {super.key, this.styles, this.attributes, this.events})
-      : _tag = 'md-menu';
+  Menu(this.children, {super.key, this.styles, this.attributes, this.events}) : _tag = 'md-menu';
 
   /// Representa el [Menu] hijo del componente [Menu].
-  Menu.submenu(
-    this.children, {
-    super.key,
-    this.styles,
-    this.attributes,
-    this.events,
-  }) : _tag = 'md-sub-menu';
+  Menu.submenu(this.children, {super.key, this.styles, this.attributes, this.events}) : _tag = 'md-sub-menu';
 
   @override
-  Element createElement() {
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: _tag,
-        styles: styles,
-        attributes: attributes,
-        children: children,
-        events: {...?events},
-      ),
-    );
+  Component build(BuildContext context) {
+    return Component.element(key: key, tag: _tag, styles: styles, attributes: attributes, children: children, events: {...?events});
   }
 }
 
-class MenuItem extends Component {
+class MenuItem extends StatelessComponent {
   final Styles? styles;
 
   final Map<String, String>? attributes;
@@ -52,15 +37,7 @@ class MenuItem extends Component {
   const MenuItem(this.children, {this.styles, this.attributes, this.events});
 
   @override
-  Element createElement() {
-    return DomElement(
-      DomComponent(
-        tag: 'md-menu-item',
-        styles: styles,
-        attributes: attributes,
-        children: children,
-        events: {...?events},
-      ),
-    );
+  Component build(BuildContext context) {
+    return Component.element(tag: 'md-menu-item', styles: styles, attributes: attributes, children: children, events: {...?events});
   }
 }

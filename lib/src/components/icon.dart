@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente [Icon] de Material Design Components.
@@ -22,25 +23,33 @@ import 'package:jaspr/jaspr.dart';
 /// Icon('home', cssClass: 'material-symbols-outlined');
 /// ```
 ///
-class Icon extends Component {
+class Icon extends StatelessComponent {
   final String icon;
 
   final String? cssClass;
 
+  final IconVariant? variant;
+
   final Map<String, String>? attributes;
 
-  const Icon(this.icon, {super.key, this.cssClass, this.attributes});
+  const Icon(this.icon, {super.key, this.cssClass, this.variant = IconVariant.outlined, this.attributes});
 
   @override
-  Element createElement() {
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: 'md-icon',
-        child: Text(icon),
-        classes: cssClass,
-        attributes: attributes,
-      ),
-    );
+  Component build(BuildContext context) {
+    String materialClass = 'material-symbols-${variant?.name}';
+    return span(classes: cssClass != null ? '$materialClass $cssClass' : materialClass, attributes: attributes, [.text(icon)]);
+    // return Component.element(
+    //   key: key,
+    //   tag: 'md-icon',
+    //   children: [text(icon)],
+    //   classes: cssClass,
+    //   attributes: attributes,
+    // );
   }
+}
+
+enum IconVariant {
+  outlined,
+  rounded,
+  sharp,
 }

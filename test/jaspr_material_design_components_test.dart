@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_material_design_components/jaspr_material_design_components.dart';
 
@@ -5,12 +6,12 @@ import 'package:test/test.dart';
 
 void main() {
   group('A group of tests', () {
-    final button = Button.elevated(children: [Text('Text')]);
+    final button = Button.elevated(children: [Component.text('Text')]);
     final icon = Icon('home');
     final chip = Chip.assist('Assist');
     final menu = Menu([
       MenuItem([
-        div([text('Apple')], attributes: {'slot': 'headline'}),
+        div([.text('Apple')], attributes: {'slot': 'headline'}),
       ]),
     ]);
 

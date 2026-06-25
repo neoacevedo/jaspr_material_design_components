@@ -1,7 +1,8 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente [Checkbox](https://material-web.dev/components/checkbox/) de Material Web Components.
-class Checkbox extends Component {
+class Checkbox extends StatelessComponent {
   final String? cssClass;
 
   final Map<String, String>? attributes;
@@ -10,25 +11,10 @@ class Checkbox extends Component {
 
   final Map<String, EventCallback>? events;
 
-  Checkbox({
-    super.key,
-    this.attributes,
-    this.cssClass,
-    this.styles,
-    this.events,
-  });
+  Checkbox({super.key, this.attributes, this.cssClass, this.styles, this.events});
 
   @override
-  Element createElement() {
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: "md-checkbox",
-        classes: cssClass,
-        attributes: attributes,
-        styles: styles,
-        events: events,
-      ),
-    );
+  Component build(BuildContext context) {
+    return Component.element(key: key, tag: "md-checkbox", classes: cssClass, attributes: attributes, styles: styles, events: events);
   }
 }

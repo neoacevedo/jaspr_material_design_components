@@ -1,43 +1,28 @@
+import 'package:jaspr/dom.dart' hide Animation;
 import 'package:jaspr/jaspr.dart';
 
-/// Representa el componente [Ripple](https://material-web.dev/components/ripple/) de Material Web Components.
-class Ripple extends Component {
+class Ripple extends StatelessComponent {
   final bool? disabled;
-  final String? htmlFor;
-  final Styles? styles;
-  final String? cssClass;
-  final Map<String, String>? attributes;
-  final Map<String, EventCallback>? events;
+  final bool hovered;
+  final bool pressed;
 
   const Ripple({
     super.key,
     this.disabled,
-    this.htmlFor,
-    this.styles,
-    this.cssClass,
-    this.attributes,
-    this.events,
+    this.hovered = false,
+    this.pressed = false,
   });
 
   @override
-  Element createElement() {
-    if (disabled != null) {
-      attributes?['disabled'] = '';
-    }
+  Component build(BuildContext context) {
+    String rippleClasses = 'ripple';
+    if (disabled == true) rippleClasses += ' disabled';
+    if (hovered) rippleClasses += ' hovered';
+    if (pressed) rippleClasses += ' pressed';
 
-    if (htmlFor != null) {
-      attributes?['for'] = htmlFor!;
-    }
-
-    return DomElement(
-      DomComponent(
-        key: key,
-        tag: 'md-ripple',
-        attributes: attributes,
-        styles: styles,
-        classes: cssClass,
-        events: events,
-      ),
-    );
+    return div(classes: rippleClasses, [
+      span([], classes: 'ripple-element'),
+      span([], classes: 'surface'),
+    ]);
   }
 }

@@ -4,7 +4,6 @@
 library;
 
 export 'src/jaspr_material_design_components.dart';
-export 'src/styles/shared.dart';
 export 'src/components/button.dart';
 export 'src/components/card.dart';
 export 'src/components/checkbox.dart';
@@ -12,7 +11,9 @@ export 'src/components/chip.dart';
 export 'src/components/chipset.dart';
 export 'src/components/dialog.dart';
 export 'src/components/divider.dart';
+export 'src/components/elevation.dart';
 export 'src/components/floating_action_button.dart';
+export 'src/components/focus.dart';
 export 'src/components/icon.dart';
 export 'src/components/menu.dart';
 export 'src/components/list_tile.dart';

@@ -1,0 +1,98 @@
+.ripple,
+.surface {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0px;
+    overflow: hidden;
+}
+
+.ripple {
+    cursor: pointer;
+    font-family: var(--_label-text-font);
+    font-size: var(--_label-text-size);
+    line-height: var(--_label-text-line-height);
+    font-weight: var(--_label-text-weight);
+    text-wrap: nowrap;
+    --md-ripple-hover-color: var(--_hover-state-layer-color);
+    --md-ripple-pressed-color: var(--_pressed-state-layer-color);
+    --md-ripple-hover-opacity: var(--_hover-state-layer-opacity);
+    --md-ripple-pressed-opacity: var(--_pressed-state-layer-opacity);
+
+    & {
+        display: flex;
+        margin: auto;
+        pointer-events: none;
+    }
+}
+
+.ripple.disabled {
+    display: none;
+}
+
+@media (forced-colors: active) {
+    .ripple {
+        display: none;
+    }
+}
+
+.surface {
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: none;
+
+    &::before,
+    &::after {
+        content: '';
+        opacity: 0;
+        position: absolute;
+    }
+
+    &::before {
+        background-color: var(--md-ripple-hover-color, var(--md-sys-color-on-surface, #1d1b20));
+        inset: 0;
+        transition: opacity 15ms linear, background-color 15ms linear;
+    }
+
+    &::after {
+        background: radial-gradient(closest-side, var(--md-ripple-pressed-color, var(--md-sys-color-on-surface, #1d1b20)) max(100% - 70px, 65%), transparent 100%);
+        transform-origin: center center;
+        transition: opacity 375ms linear;
+    }
+}
+
+.hovered .surface::before {
+    background-color: var(--md-ripple-hover-color, var(--md-sys-color-on-surface, #1d1b20));
+    opacity: var(--md-ripple-hover-opacity, 0.08);
+}
+
+.pressed .surface::after {
+    opacity: var(--md-ripple-pressed-opacity, 0.12);
+    transition-duration: 105ms;
+}
+
+/* Expanding ripple circle */
+.ripple-element {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--md-ripple-pressed-color, var(--md-sys-color-on-surface, #1d1b20));
+    pointer-events: none;
+    z-index: 1;
+
+    /* Start centered, scaled to 0 */
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+
+    /* Fast shrink, slow grow */
+    transition: transform 150ms cubic-bezier(0.2, 0, 0, 1),
+        opacity 150ms linear;
+}
+
+.pressed .ripple-element {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: var(--md-ripple-pressed-opacity, 0.12);
+    transition: transform 450ms cubic-bezier(0.2, 0, 0, 1),
+        opacity 450ms linear;
+}

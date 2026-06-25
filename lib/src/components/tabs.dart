@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Representa el componente web `tabs` de [Material Web Components](https://material-web.dev/components/tabs/).
@@ -13,7 +14,7 @@ import 'package:jaspr/jaspr.dart';
 /// generará cada atributo HTML para la etiqueta, y los eventos se manejan a través del mapa `[events]`.
 ///
 /// El componente `[Tabs]` también puede tener estilos personalizados a través del parámetro `[styles]`, que permite ajustar su apariencia según las necesidades del diseño.
-class Tabs extends Component {
+class Tabs extends StatelessComponent {
   final List<Component>? children;
 
   final Map<String, String>? attributes;
@@ -23,18 +24,11 @@ class Tabs extends Component {
   final Styles? styles;
 
   /// Representa el componente web `tabs` de [Material Web Components](https://material-web.dev/components/tabs/).
-  const Tabs(
-      {super.key, this.children, this.attributes, this.events, this.styles});
+  const Tabs({super.key, this.children, this.attributes, this.events, this.styles});
 
   @override
-  Element createElement() {
-    return DomElement(DomComponent(
-        key: key,
-        tag: 'md-tabs',
-        children: children,
-        attributes: attributes,
-        events: events,
-        styles: styles));
+  Component build(BuildContext context) {
+    return Component.element(key: key, tag: 'md-tabs', children: children, attributes: attributes, events: events, styles: styles);
   }
 }
 
@@ -53,7 +47,7 @@ class Tabs extends Component {
 /// generará cada atributo HTML para la etiqueta, y los eventos se manejan a través del mapa `[events]`.
 ///
 /// El componente `[Tab]` también puede tener estilos personalizados a través del parámetro `[styles]`, que permite ajustar su apariencia según las necesidades del diseño.
-class Tab extends Component {
+class Tab extends StatelessComponent {
   final List<Component>? children;
 
   final Map<String, String>? attributes;
@@ -95,9 +89,7 @@ class Tab extends Component {
   ///   ),
   /// )
   /// ```
-  const Tab.primary(
-      {super.key, this.children, this.attributes, this.events, this.styles})
-      : _tag = 'md-primary-tab';
+  const Tab.primary({super.key, this.children, this.attributes, this.events, this.styles}) : _tag = 'md-primary-tab';
 
   /// [Tab.secondary] representa el componente `tab` secundario.
   /// Este tipo de pestaña se utiliza para opciones adicionales o secundarias en la interfaz de usuario.
@@ -129,18 +121,10 @@ class Tab extends Component {
   ///   ),
   /// )
   /// ```
-  const Tab.secondary(
-      {super.key, this.children, this.attributes, this.events, this.styles})
-      : _tag = 'md-secondary-tab';
+  const Tab.secondary({super.key, this.children, this.attributes, this.events, this.styles}) : _tag = 'md-secondary-tab';
 
   @override
-  Element createElement() {
-    return DomElement(DomComponent(
-        key: key,
-        tag: _tag,
-        children: children,
-        attributes: attributes,
-        events: events,
-        styles: styles));
+  Component build(BuildContext context) {
+    return Component.element(key: key, tag: _tag, children: children, attributes: attributes, events: events, styles: styles);
   }
 }
