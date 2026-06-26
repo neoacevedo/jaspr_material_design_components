@@ -2,30 +2,29 @@
 
 ```dart
 Button.elevated(children: [
-    Icon('home', attributes: {'slot': 'icon'}),
+    Icon('home'),
     text('Elevated')
 ]);
 
 Button.filled(children: [
-    Icon('home', attributes: {'slot': 'icon'}),
+    Icon('home'),
     text('Filled')
 ]);
 
 Button.outlined(children: [
-    Icon('home', attributes: {'slot': 'icon'}),
+    Icon('home'),
     text('Outlined')
 ]);
 
 Button.text(children: [
-    Icon('home', attributes: {'slot': 'icon'}),
+    Icon('home'),
     text('Text')
 ]);
 
 Button.filledTonal(children: [
-    Icon('home', attributes: {'slot': 'icon'}),
+    Icon('home'),
     Text('Tonal')
 ]);
 
-Button.icon(attributes: {'slot': 'trailing-icon'},
-            children: [Icon('visibility')]);
+Button.icon(children: [Icon('visibility')]);
 ```

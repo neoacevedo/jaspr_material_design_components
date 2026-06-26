@@ -42,12 +42,10 @@ const StyleRule.import(
       'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'),
 ```
 
-Incluya el siguiente código en el último lugar dentro del método `build` de la clase `App` de su proyecto para inicializar los componentes web de Material: 
+Incluya el siguiente código en el último lugar dentro del componente `fragment` en el build de la clase `App` de su proyecto para inicializar los componentes web de Material: 
 
 ```dart
-for (var element in JasprMaterialDesignComponents().materialScript()) {
-      yield element;
-}
+for (var element in JasprMaterialDesignComponents().materialScript()) element
 ```
 
 Esto cargará los estilos y scripts para que los componentes de Material se puedan usar.

@@ -311,17 +311,14 @@ class _ButtonState extends State<Button> {
       if (component.disabled == true) 'disabled': '',
       if (component.name != null) 'name': component.name!,
       if (component.hasIcon == true) 'has-icon': '',
-      if (component.trailingIcon != null) 'trailing-icon': component.trailingIcon!,
       if (component.softDisabled == true) 'soft-disabled': '',
       if (component.value != null) 'value': component.value!,
     };
 
     var buttonContent = component.children;
-
     if (buttonContent != null) {
       if (buttonContent.any((c) => c is Icon) && buttonContent.any((c) => c is Text)) {
         if (component.trailingIcon != null) {
-          print(component.trailingIcon);
           buttonContent = [
             ...buttonContent.whereType<Text>().map((text) => span(classes: 'label', [text])),
             ...buttonContent.whereType<Icon>(),
@@ -330,7 +327,14 @@ class _ButtonState extends State<Button> {
           buttonContent = buttonContent.map((c) => c is Text ? label(classes: 'label', [c]) : c).toList();
         }
       } else {
-        buttonContent = buttonContent.map((c) => c is Text ? label(classes: 'label', [c]) : c).toList();
+        if (component.trailingIcon != null) {
+          buttonContent = [
+            ...buttonContent.whereType<Text>().map((text) => span(classes: 'label', [text])),
+            Icon(component.trailingIcon!),
+          ];
+        } else {
+          buttonContent = buttonContent.map((c) => c is Text ? label(classes: 'label', [c]) : c).toList();
+        }
       }
     }
 
@@ -345,7 +349,8 @@ class _ButtonState extends State<Button> {
         ...?component.events,
       },
       [
-        if (component._type.startsWith('outlined') || component._type.startsWith('text') == false) Elevation(),
+        if (component._type.startsWith('outlined') && (component._type.startsWith('text', 0) == false || component._type.contains(RegExp('icon')) == false))
+          Elevation(),
         if (component._type.startsWith('outlined') == true) div([], classes: 'outline'),
 
         div(classes: 'background', []),
