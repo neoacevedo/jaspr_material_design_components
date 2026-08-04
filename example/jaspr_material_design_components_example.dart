@@ -81,47 +81,19 @@ class _AppState extends State<App> {
         div(classes: 'material-examples', [
           Card.outlined(
             children: [
-              h6([text('Botones e inputs')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Botones e inputs')], classes: 'md-typescale-headline-medium'),
               div([
-                Button.elevated(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Elevated'),
-                  ],
-                ),
-                Button.filled(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Filled'),
-                  ],
-                ),
-                Button.outlined(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Outlined'),
-                  ],
-                ),
-                Button.text(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Text'),
-                  ],
-                ),
-                Button.filledTonal(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    Component.text('Tonal'),
-                  ],
-                ),
+                Button.elevated(children: [Icon('home'), Component.text('Elevated')]),
+                Button.filled(children: [Icon('home'), Component.text('Filled')]),
+                Button.outlined(children: [Icon('home'), Component.text('Outlined')]),
+                Button.text(children: [Icon('home'), Component.text('Text')]),
+                Button.filledTonal(children: [Icon('home'), Component.text('Tonal')]),
                 p([]),
                 TextField(
                   filled: true,
                   label: 'Filled Text Field',
                   children: [
-                    span(
-                      [Component.text('search')],
-                      classes: 'material-symbols-outlined md-text-field__icon md-text-field__icon--leading',
-                    ),
+                    span([Component.text('search')], classes: 'material-symbols-outlined md-text-field__icon md-text-field__icon--leading'),
                   ],
                 ),
                 TextField(
@@ -129,10 +101,7 @@ class _AppState extends State<App> {
                   children: [
                     svg(
                       [
-                        Component.element(
-                          tag: 'path',
-                          attributes: {'d': 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'},
-                        ),
+                        Component.element(tag: 'path', attributes: {'d': 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'}),
                       ],
                       viewBox: '0 0 24 24',
                       classes: 'md-text-field__icon md-text-field__icon--trailing',
@@ -143,7 +112,7 @@ class _AppState extends State<App> {
                 p([]),
                 TextField(filled: true, label: 'Filled Text Area', inputType: 'textarea', rows: 3),
                 TextField(label: 'Outlined Text Area', inputType: 'textarea', rows: 3),
-                p([text('Checkbox y Radio')]),
+                p([Component.text('Checkbox y Radio')]),
                 Checkbox(attributes: {'touch-target': 'wrapper'}),
                 Checkbox(attributes: {'touch-target': 'wrapper', 'checked': ''}),
                 Checkbox(attributes: {'touch-target': 'wrapper', 'indeterminate': ''}),
@@ -157,7 +126,7 @@ class _AppState extends State<App> {
           ),
           Card(
             children: [
-              h6([text('Chips')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Chips')], classes: 'md-typescale-headline-medium'),
               div([
                 Chipset([Chip.assist('Assist'), Chip.filter('Filter', removable: false), Chip.input('Input'), Chip.suggestion('Suggestion')]),
               ]),
@@ -166,14 +135,14 @@ class _AppState extends State<App> {
           ),
           Card.filled(
             children: [
-              h6([text('ListTile')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('ListTile')], classes: 'md-typescale-headline-medium'),
               div([
                 ListTile(
                   styles: Styles(maxWidth: 300.px),
                   children: [
                     ListTile.item(
                       children: [
-                        text('Lit'),
+                        Component.text('Lit'),
                         svg(
                           [
                             raw(
@@ -189,14 +158,14 @@ class _AppState extends State<App> {
                     Divider(),
                     ListTile.item(
                       children: [
-                        text('Polymer'),
+                        Component.text('Polymer'),
                         Icon('polymer', attributes: {'slot': 'start'}),
                       ],
                     ),
                     Divider(),
                     ListTile.item(
                       children: [
-                        text('Angular'),
+                        Component.text('Angular'),
                         Icon('angular', attributes: {'slot': 'start'}),
                       ],
                     ),
@@ -208,7 +177,7 @@ class _AppState extends State<App> {
           ),
           Card.outlined(
             children: [
-              h6([text('Menu')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Menu')], classes: 'md-typescale-headline-medium'),
               div([
                 span([
                   Button.filled(
@@ -217,18 +186,18 @@ class _AppState extends State<App> {
                       'anchor': 'anchor',
                       //'type': 'button'
                     },
-                    children: [text('Set with idref via javascript')],
+                    children: [Component.text('Set with idref via javascript')],
                   ),
                   Menu(
                     [
                       MenuItem([
-                        div([text('Apple')], attributes: {'slot': 'headline'}),
+                        div([Component.text('Apple')], attributes: {'slot': 'headline'}),
                       ]),
                       MenuItem([
-                        div([text('Banana')], attributes: {'slot': 'headline'}),
+                        div([Component.text('Banana')], attributes: {'slot': 'headline'}),
                       ]),
                       MenuItem([
-                        div([text('Cucumber')], attributes: {'slot': 'headline'}),
+                        div([Component.text('Cucumber')], attributes: {'slot': 'headline'}),
                       ]),
                     ],
                     attributes: {'id': 'usage-menu', 'anchor': 'usage-anchor'},
@@ -236,23 +205,23 @@ class _AppState extends State<App> {
                 ], styles: Styles(position: Position.relative())),
               ]),
               br(),
-              h6([text('Uso de setState para abrir/cerrar el menú')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Uso de setState para abrir/cerrar el menú')], classes: 'md-typescale-headline-medium'),
               div([
                 span([
                   Button.outlined(
                     attributes: {'id': 'usage-anchor2'},
                     events: events(onClick: toggleMenu),
-                    children: [text('Set with state change (setState)')],
+                    children: [Component.text('Set with state change (setState)')],
                   ),
                   Menu(key: menuKey, [
                     MenuItem([
-                      div([text('Apple 2')], attributes: {'slot': 'headline'}),
+                      div([Component.text('Apple 2')], attributes: {'slot': 'headline'}),
                     ]),
                     MenuItem([
-                      div([text('Banana 2')], attributes: {'slot': 'headline'}),
+                      div([Component.text('Banana 2')], attributes: {'slot': 'headline'}),
                     ]),
                     MenuItem([
-                      div([text('Cucumber 2')], attributes: {'slot': 'headline'}),
+                      div([Component.text('Cucumber 2')], attributes: {'slot': 'headline'}),
                     ]),
                   ], attributes: menuAttributes),
                 ], styles: Styles(position: Position.relative())),
@@ -262,25 +231,22 @@ class _AppState extends State<App> {
           ),
           Card.outlined(
             children: [
-              h6([text('Progress Indicators')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Progress Indicators')], classes: 'md-typescale-headline-medium'),
               div([
-                p([text('Linear'), ProgressIndicator(ProgressIndicator.linear, value: 0.5)]),
-                p([text('Linear Indeterminado'), ProgressIndicator(ProgressIndicator.linear, indeterminate: true)]),
-                p([text('Circular'), ProgressIndicator(ProgressIndicator.circular, value: 0.75)]),
-                p([text('Circular Indeterminado'), ProgressIndicator(ProgressIndicator.circular, indeterminate: true)]),
+                p([Component.text('Linear'), ProgressIndicator(ProgressIndicator.linear, value: 0.5)]),
+                p([Component.text('Linear Indeterminado'), ProgressIndicator(ProgressIndicator.linear, indeterminate: true)]),
+                p([Component.text('Circular'), ProgressIndicator(ProgressIndicator.circular, value: 0.75)]),
+                p([Component.text('Circular Indeterminado'), ProgressIndicator(ProgressIndicator.circular, indeterminate: true)]),
               ]),
             ],
             cssClass: 'group',
           ),
           Card.filled(
             children: [
-              h6([text('Dialogs')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Dialogs')], classes: 'md-typescale-headline-medium'),
               div([
                 Button.elevated(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Diálogo simple'),
-                  ],
+                  children: [Icon('home'), Component.text('Diálogo simple')],
                   events: events(
                     onClick: () {
                       setState(() {
@@ -291,10 +257,7 @@ class _AppState extends State<App> {
                   ),
                 ),
                 Button.filled(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Alert'),
-                  ],
+                  children: [Icon('home'), Component.text('Alert')],
                   events: events(
                     onClick: () {
                       setState(() {
@@ -307,10 +270,7 @@ class _AppState extends State<App> {
                 br(),
                 br(),
                 Button.outlined(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    text('Diálogo Confirm'),
-                  ],
+                  children: [Icon('home'), Component.text('Diálogo Confirm')],
                   events: events(
                     onClick: () {
                       setState(() {
@@ -321,10 +281,7 @@ class _AppState extends State<App> {
                   ),
                 ),
                 Button.text(
-                  children: [
-                    Icon('home', attributes: {'slot': 'icon'}),
-                    Component.text('Form'),
-                  ],
+                  children: [Icon('home'), Component.text('Form')],
                   events: events(
                     onClick: () {
                       setState(() {
@@ -340,20 +297,20 @@ class _AppState extends State<App> {
           ),
           Card(
             children: [
-              h6([text('Sliders')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Sliders')], classes: 'md-typescale-headline-medium'),
               div([
                 span([
-                  text('Continuo'),
+                  Component.text('Continuo'),
                   Slider(attributes: {'min': '0', 'max': '100', 'value': '50'}),
                 ]),
                 br(),
                 span([
-                  text('Discreto'),
+                  Component.text('Discreto'),
                   Slider(attributes: {'step': 5.toString(), 'min': '0', 'max': '20'}, ticks: true),
                 ]),
                 br(),
                 span([
-                  text('Rango (con etiqueta de valor)'),
+                  Component.text('Rango (con etiqueta de valor)'),
                   Slider(attributes: {'value-start': '25', 'value-end': '50'}, range: true, labeled: true),
                 ]),
               ]),
@@ -362,7 +319,7 @@ class _AppState extends State<App> {
           ),
           Card.outlined(
             children: [
-              h6([text('Select')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Select')], classes: 'md-typescale-headline-medium'),
               Select.outlined(
                 label: 'Label',
                 attributes: {'required': ''},
@@ -372,13 +329,13 @@ class _AppState extends State<App> {
                     selected: true,
                     value: 'apple',
                     children: [
-                      div(attributes: {'slot': 'headline'}, [text('Apple')]),
+                      div(attributes: {'slot': 'headline'}, [Component.text('Apple')]),
                     ],
                   ),
                   SelectOption(
                     value: 'tomato',
                     children: [
-                      div(attributes: {'slot': 'headline'}, [text('Tomato')]),
+                      div(attributes: {'slot': 'headline'}, [Component.text('Tomato')]),
                     ],
                   ),
                 ],
@@ -388,7 +345,7 @@ class _AppState extends State<App> {
           ),
           Card(
             children: [
-              h6([text('Tabs')], classes: 'md-typescale-headline-medium'),
+              h6([Component.text('Tabs')], classes: 'md-typescale-headline-medium'),
               Tabs(
                 key: tabKey,
                 events: {
@@ -428,14 +385,14 @@ class _AppState extends State<App> {
                 },
                 attributes: {'aria-label': 'Content to view', 'active-tab-index': '0'},
                 children: [
-                  Tab.primary(attributes: {'id': 'photos-tab', 'aria-controls': 'photos-panel'}, children: [text('Photos')]),
-                  Tab.primary(attributes: {'id': 'videos-tab', 'aria-controls': 'videos-panel'}, children: [text('Videos')]),
-                  Tab.primary(attributes: {'id': 'music-tab', 'aria-controls': 'music-panel'}, children: [text('Music')]),
+                  Tab.primary(attributes: {'id': 'photos-tab', 'aria-controls': 'photos-panel'}, children: [Component.text('Photos')]),
+                  Tab.primary(attributes: {'id': 'videos-tab', 'aria-controls': 'videos-panel'}, children: [Component.text('Videos')]),
+                  Tab.primary(attributes: {'id': 'music-tab', 'aria-controls': 'music-panel'}, children: [Component.text('Music')]),
                 ],
               ),
-              div([text('Photos')], attributes: {'id': 'photos-panel', 'role': 'tabpanel', 'aria-labelledby': 'photos-tab'}),
-              div([text('Videos')], attributes: {'id': 'videos-panel', 'role': 'tabpanel', 'aria-labelledby': 'videos-tab', 'hidden': ''}),
-              div([text('Music')], attributes: {'id': 'music-panel', 'role': 'tabpanel', 'aria-labelledby': 'music-tab', 'hidden': ''}),
+              div([Component.text('Photos')], attributes: {'id': 'photos-panel', 'role': 'tabpanel', 'aria-labelledby': 'photos-tab'}),
+              div([Component.text('Videos')], attributes: {'id': 'videos-panel', 'role': 'tabpanel', 'aria-labelledby': 'videos-tab', 'hidden': ''}),
+              div([Component.text('Music')], attributes: {'id': 'music-panel', 'role': 'tabpanel', 'aria-labelledby': 'music-tab', 'hidden': ''}),
             ],
             cssClass: 'group',
           ),
@@ -444,7 +401,7 @@ class _AppState extends State<App> {
       Dialog(
         key: myDialogKey,
         children: [
-          .text('Este es un diálogo'),
+          Component.text('Este es un diálogo'),
           if (dialogAttributes.containsKey('type') && dialogAttributes['type'] == 'form') TextField(label: 'Input'),
         ],
         attributes: dialogAttributes,

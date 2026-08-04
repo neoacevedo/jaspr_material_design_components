@@ -204,16 +204,24 @@ class _TextFieldState extends State<TextField> {
   }
 
   static String? _classesOf(Component child) {
+    if (child is DomComponent) {
+      final classes = child.classes;
+      if (classes != null && classes.isNotEmpty) return classes;
+    }
     try {
       final dynamic c = child;
-      final classes = c.classes;
-      return classes is String ? classes : null;
+      final cssClass = c.cssClass;
+      if (cssClass is String && cssClass.isNotEmpty) return cssClass;
     } on NoSuchMethodError {
-      return null;
+      // El hijo no expone `cssClass` (p.ej. Text, Fragment).
     }
+    return null;
   }
 
-  static bool _hasIconClass(Component child, String variant) => (_classesOf(child) ?? '').split(' ').contains('md-text-field__icon--$variant');
+  static bool _hasIconClass(Component child, String variant) {
+    final classes = (_classesOf(child) ?? '').split(' ');
+    return classes.contains('md-text-field__icon') && classes.contains('md-text-field__icon--$variant');
+  }
 
   @override
   Component build(BuildContext context) {
@@ -221,8 +229,8 @@ class _TextFieldState extends State<TextField> {
     final variant = _variant;
     final hasValue = _value.isNotEmpty;
     final children = component.children ?? const <Component>[];
-    final leadingIcons = children.where((c) => _hasIconClass(c, 'md-text-field--with-leading-icon ')).toList();
-    final trailingIcons = children.where((c) => _hasIconClass(c, 'md-text-field--with-trailing-icon ')).toList();
+    final leadingIcons = children.where((c) => _hasIconClass(c, 'leading')).toList();
+    final trailingIcons = children.where((c) => _hasIconClass(c, 'trailing')).toList();
     final hasLeading = leadingIcons.isNotEmpty;
     final hasTrailing = trailingIcons.isNotEmpty;
     final showLabel = component.label != null;
