@@ -13,6 +13,7 @@ If not,see <http: //www.gnu.org/licenses/>. */
 @import url('button.css');
 @import url('ripple.css');
 @import url('focus.css');
+@import url('text-field.css');
 
 :root {
     --md-sys-elevation-level0: 0;
@@ -113,7 +114,8 @@ If not,see <http: //www.gnu.org/licenses/>. */
     --md-outlined-card-container-shadow-color: var(--md-sys-color-shadow, #000);
     --md-outlined-card-container-shape: var(--md-sys-shape-corner-medium, 12px);
     --md-outlined-card-outline-color: var(--md-sys-color-outline-variant, #cac4d0);
-    --md-outlined-card-outline-width: 1px
+    --md-outlined-card-outline-width: 1px;
+    --md-filled-field-container-color: var(--_container-color);
 }
 
 @font-face {

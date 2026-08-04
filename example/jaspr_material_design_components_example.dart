@@ -116,20 +116,33 @@ class _AppState extends State<App> {
                 p([]),
                 TextField(
                   filled: true,
-                  attributes: {'label': 'Filled Text Field'},
+                  label: 'Filled Text Field',
                   children: [
-                    Icon('search', attributes: {'slot': 'leading-icon'}),
+                    span(
+                      [Component.text('search')],
+                      classes: 'material-symbols-outlined md-text-field__icon md-text-field__icon--leading',
+                    ),
                   ],
                 ),
                 TextField(
-                  attributes: {'placeholder': 'Outlined Text Field'},
+                  placeholder: 'Outlined Text Field',
                   children: [
-                    Button.icon(attributes: {'slot': 'trailing-icon'}, children: [Icon('visibility')]),
+                    svg(
+                      [
+                        Component.element(
+                          tag: 'path',
+                          attributes: {'d': 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'},
+                        ),
+                      ],
+                      viewBox: '0 0 24 24',
+                      classes: 'md-text-field__icon md-text-field__icon--trailing',
+                      attributes: {'fill': 'currentColor'},
+                    ),
                   ],
                 ),
                 p([]),
-                TextField(filled: true, attributes: {'label': 'Filled Text Area', 'type': 'textarea', 'rows': '3'}),
-                TextField(attributes: {'label': 'Outlined Text Area', 'type': 'textarea', 'rows': '3'}),
+                TextField(filled: true, label: 'Filled Text Area', inputType: 'textarea', rows: 3),
+                TextField(label: 'Outlined Text Area', inputType: 'textarea', rows: 3),
                 p([text('Checkbox y Radio')]),
                 Checkbox(attributes: {'touch-target': 'wrapper'}),
                 Checkbox(attributes: {'touch-target': 'wrapper', 'checked': ''}),
@@ -432,7 +445,7 @@ class _AppState extends State<App> {
         key: myDialogKey,
         children: [
           .text('Este es un diálogo'),
-          if (dialogAttributes.containsKey('type') && dialogAttributes['type'] == 'form') TextField(attributes: {'label': 'Input'}),
+          if (dialogAttributes.containsKey('type') && dialogAttributes['type'] == 'form') TextField(label: 'Input'),
         ],
         attributes: dialogAttributes,
       ),
